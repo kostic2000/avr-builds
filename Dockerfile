@@ -1,5 +1,5 @@
 ##
-## GCC AVR Toolchain, simavr
+## GCC AVR Toolchain, simavr, host gcc toolchain
 
 FROM ubuntu:latest
 MAINTAINER Konstantin Begun
@@ -13,7 +13,6 @@ RUN \
     apt-get update && apt-get install -y --no-install-recommends \
                               wget                               \
 							  git								 \
-                              make                               \
                               build-essential                    \
                               libmpc-dev                         \
                               libmpfr-dev                        \
@@ -53,9 +52,6 @@ RUN \
  && make build-simavr && make install && cd .. \
     #### clean up the image ####
  && cd .. && rm -rf distr   \
- && apt-get remove -y       \
-            wget            \
-            build-essential \
  && apt-get autoremove -y   \
  && apt-get clean           \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
