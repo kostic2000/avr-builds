@@ -24,6 +24,12 @@ RUN \
  && wget https://cmake.org/files/v3.3/cmake-3.3.2.tar.gz --no-check-certificate \
  && tar -zxvf cmake-3.3.2.tar.gz && cd cmake-3.3.2 \
  && ./bootstrap && make && make install && cd .. \
+    #### build and install make-4.2.1 ####
+ && wget http://ftp.gnu.org/gnu/make/make-4.2.1.tar.bz2 \
+ && bunzip2 -c make-4.2.1.tar.bz2 | tar xf - && cd make-4.2.1 \
+ && mkdir build && cd build \
+ && ../configure \
+ && make && make install && cd ../.. \
     #### build and install binutils-2.25.1 ####
  && wget http://ftp.gnu.org/gnu/binutils/binutils-$BINUTILS_VERSION.tar.bz2 \
  && bunzip2 -c binutils-$BINUTILS_VERSION.tar.bz2 | tar xf - && cd binutils-$BINUTILS_VERSION \
@@ -49,7 +55,6 @@ RUN \
  && cd .. && rm -rf distr   \
  && apt-get remove -y       \
             wget            \
-			git				\
             build-essential \
  && apt-get autoremove -y   \
  && apt-get clean           \
