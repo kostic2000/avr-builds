@@ -44,8 +44,8 @@ RUN \
  && ./configure --prefix=/usr/local/avr --build=`./config.guess` --host=avr \
  && make && make install && cd .. \
 	#### build and install simavr ####
- && git clone git://github.com/buserror-uk/simavr.git
- && cd simavr
+ && git clone git://github.com/buserror-uk/simavr.git \
+ && cd simavr \
  && make build-simavr && make install && cd .. \
     #### clean up the image ####
  && cd .. && rm -rf distr   \
