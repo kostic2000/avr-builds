@@ -14,11 +14,13 @@ RUN \
     #### install build tools ####
     apt-get update && apt-get install -y --no-install-recommends \
                               wget                               \
+							  git								 \
                               make                               \
                               build-essential                    \
                               libmpc-dev                         \
                               libmpfr-dev                        \
                               libgmp3-dev                        \
+							  libelf-dev						 \
  && mkdir /usr/local/avr /opt/distr && cd /opt/distr \
     #### build and install cmake-3.3.2 ####
  && wget https://cmake.org/files/v3.3/cmake-3.3.2.tar.gz --no-check-certificate \
@@ -41,6 +43,10 @@ RUN \
  && bunzip2 -c avr-libc-$LIBC_VERSION.tar.bz2 | tar xf - && cd avr-libc-$LIBC_VERSION \
  && ./configure --prefix=/usr/local/avr --build=`./config.guess` --host=avr \
  && make && make install && cd .. \
+	#### build and install simavr ####
+ && git clone git://github.com/buserror-uk/simavr.git
+ && cd simavr
+ && make build-simavr && make install && cd .. \
     #### clean up the image ####
  && cd .. && rm -rf distr   \
  && apt-get remove -y       \
