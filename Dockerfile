@@ -47,7 +47,7 @@ RUN \
  && ./configure --build=`./config.guess` --host=avr \
  && make && make install && cd .. \
 	#### build and install simavr ####
- && git clone https://github.com/kostic2000/simavr.git \
+ && git clone git://github.com/kostic2000/simavr.git \
  && cd simavr \
  && make build-simavr && make install && cd .. \
     #### clean up the image ####
