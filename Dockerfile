@@ -18,6 +18,7 @@ RUN \
                               libmpfr-dev                        \
                               libgmp3-dev                        \
 							  libelf-dev						 \
+							  freeglut3-dev						 \
  && mkdir /opt/distr && cd /opt/distr \
     #### build and install cmake-3.3.2 ####
  && wget https://cmake.org/files/v3.3/cmake-3.3.2.tar.gz --no-check-certificate \
