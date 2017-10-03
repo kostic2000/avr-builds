@@ -51,7 +51,7 @@ RUN \
 	#### build and install simavr ####
  && git clone git://github.com/kostic2000/simavr.git \
  && cd simavr \
- && make build-simavr && make install && cd .. \
+ && make && make install && cd .. \
     #### clean up the image ####
  && cd .. && rm -rf distr   \
  && apt-get autoremove -y   \
